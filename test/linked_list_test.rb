@@ -27,6 +27,14 @@ class Linked_List_Test < Minitest::Test
     assert_equal "West", list.head.surname
   end
 
+  def test_append_with_other_values
+    list = LinkedList.new
+
+    list.append("Erikkson")
+
+    assert_equal "Erikkson", list.head.surname
+  end
+
   def test_list_being_built
     list = LinkedList.new
     list.append("West")

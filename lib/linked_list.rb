@@ -15,4 +15,8 @@ class LinkedList
     @head = Node.new(data)
   end
 
+  def to_string
+    "The #{@head.surname} family"
+  end
+
 end

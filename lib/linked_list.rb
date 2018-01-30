@@ -1,41 +1,55 @@
 require './lib/node.rb'
+require 'pry'
 
 
 class LinkedList
   attr_reader :head,
-              :count,
-              :tail,
-              :arr_surnames,
-              :intp_array
+              :count
+
 
   def initialize(head=nil)
     @head         = head
     @count        = 0
-    @tail         = nil
-    @arr_surnames = []
-    @intp_array   = []
   end
 
   def append(data)
-    @count += 1
     if @head == nil
       @head = Node.new(data)
-      @arr_surnames << @head.surname
     else
       @head.next_node = Node.new(data)
       @tail = @head.next_node
-      @arr_surnames << @tail.surname
     end
   end
 
   def to_string
-    if @count == 1
-      "The #{@arr_surnames[0]} family"
+    current_node = @head
+    if current_node.nil?
+      "The train hasn't assembled yet"
     else
-      @intp_array.push("The #{@arr_surnames[0]} family")
-      @intp_array.push(", followed by the #{@arr_surnames[1]} family")
-      @intp_array.join
+      families = "The #{current_node.surname} family"
+      until current_node.next_node.nil?
+        current_node = current_node.next_node
+        families << ", followed by the #{current_node.surname} family"
+      end
     end
+    return familes
+    # "The #{current.surname} family"
   end
+
+  def count
+    current_node = @head
+
+    if current_node.nil?
+      @count = 0
+    else
+      until current_node.next_node.nil?
+        current_node = current_node.next_node
+        @count += 1
+      end
+    end
+    # @count
+    binding.pry
+  end
+
 
 end

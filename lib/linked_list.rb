@@ -45,13 +45,42 @@ class LinkedList
       current_node = @head
 
       (location - 1).times do
-        current = current_node.next_node
+        current_node = current_node.next_node
       end
 
       insert_node = node
       insert_node.next_node = current_node.next_node
       current_node.next_node = insert_node
 
+  end
+
+
+  def find(location, elements)
+    current_node = @head
+
+    (location).times do
+      current_node = current_node.next_node
+    end
+
+    this_fam = current_node.surname
+
+    if elements == 1
+      this_fam_string = "The #{this_fam} family"
+    else
+      this_fam_string = "The #{this_fam} family"
+
+      (elements - 1).times do
+
+        next_fam = current_node.next_node.surname
+        next_fam_string = ", followed by the #{next_fam} family"
+        this_fam_string += next_fam_string
+        current_node = current_node.next_node
+
+      end
+
+    end
+
+    this_fam_string
   end
 
 
@@ -82,8 +111,10 @@ class LinkedList
 
     if @head.nil?
       wagon_string = "There aren't any families yet."
+
     elsif @head.next_node.nil?
       wagon_string = fam_one
+
     else
       current_node = @head
 
@@ -93,8 +124,9 @@ class LinkedList
         wagon_string = fam_one += next_fam_string
         current_node = current_node.next_node
       end
-      
+
     end
+
     wagon_string
   end
 

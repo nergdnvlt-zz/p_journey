@@ -20,7 +20,7 @@ class Linked_List_Test < Minitest::Test
     assert_nil list.head
   end
 
-  ################# Testing Append - Single Node
+################# Testing Append - Single Node
 
   def test_append_method
     list = LinkedList.new
@@ -84,7 +84,7 @@ class Linked_List_Test < Minitest::Test
   end
 
 
-  ################# Testing Append - Multiple Nodes
+################# Testing Append - Multiple Nodes
 
   def test_append_additional_node
       list = LinkedList.new
@@ -150,7 +150,7 @@ class Linked_List_Test < Minitest::Test
   end
 
 
-########### Prepend Method
+################# Prepend Method
 
     def test_prepend_initial
       list = LinkedList.new
@@ -178,7 +178,7 @@ class Linked_List_Test < Minitest::Test
     end
 
 
-########### Insert Method
+################# Insert Method
 
     def test_insert_method
       list = LinkedList.new
@@ -191,6 +191,35 @@ class Linked_List_Test < Minitest::Test
       assert_instance_of Node, list.head
       assert_equal "Lawson", list.head.next_node.surname
     end
+
+
+################# Find Method
+
+def test_find_method
+  list = LinkedList.new
+  list.append("Brooks")
+  list.append("Henderson")
+  list.prepend("McKinney")
+  list.insert(1, "Lawson")
+  list.to_string
+
+  list.find(2, 1)
+
+  assert_equal "The Brooks family", list.find(2, 1)
+end
+
+def test_find_method_different_values
+  list = LinkedList.new
+  list.append("Brooks")
+  list.append("Henderson")
+  list.prepend("McKinney")
+  list.insert(1, "Lawson")
+  list.to_string
+  
+  list.find(1, 3)
+
+  assert_equal "The Lawson family, followed by the Brooks family, followed by the Henderson family", list.find(1, 3)
+end
 
 
 ################# Testing Count Method
@@ -236,7 +265,7 @@ class Linked_List_Test < Minitest::Test
     assert_equal 3, list.count
   end
 
-  def test_count
+  def test_count_multiple_nodes
 
     list = LinkedList.new
 
@@ -255,7 +284,7 @@ class Linked_List_Test < Minitest::Test
   end
 
 
-########### Test String Method
+################# Test String Method
 
   def test_list_string_method
     list = LinkedList.new
@@ -315,5 +344,30 @@ class Linked_List_Test < Minitest::Test
 
     assert_equal "The Rhodes family, followed by the Hardy family, followed by the Shaka family, followed by the Ragnar family, followed by the Ares family", list.to_string
   end
+
+
+################# Test Include Method
+
+  def test_include_method_simple
+    list = LinkedList.new
+    list.append("Brooks")
+
+    list.includes?("Brooks")
+
+    assert_equal true, list.includes?("Brooks")
+  end
+
+  # def test_include_method
+  #   list = LinkedList.new
+  #   list.append("Brooks")
+  #   list.append("Henderson")
+  #   list.prepend("McKinney")
+  #   list.insert(1, "Lawson")
+  #
+  #   list.includes?("Brooks")
+  #
+  #   assert list.includes?("Brooks")
+  # end
+
 
 end

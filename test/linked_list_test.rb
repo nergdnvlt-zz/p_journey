@@ -150,6 +150,49 @@ class Linked_List_Test < Minitest::Test
   end
 
 
+########### Prepend Method
+
+    def test_prepend_initial
+      list = LinkedList.new
+      list.append("Brooks")
+      list.append("Henderson")
+
+      list.prepend("McKinney")
+
+      assert_equal "McKinney", list.head.surname
+    end
+
+    def test_multiple_prepend
+      list = LinkedList.new
+      list.append("Brooks")
+      list.append("Henderson")
+
+      list.prepend("Ragnar")
+      assert_equal "Ragnar", list.head.surname
+
+      list.prepend("Ares")
+      assert_equal "Ares", list.head.surname
+
+      list.prepend("Erikkson")
+      assert_equal "Erikkson", list.head.surname
+    end
+
+
+########### Insert Method
+
+    def test_insert_method
+      list = LinkedList.new
+      list.append("Brooks")
+      list.append("Henderson")
+      list.prepend("McKinney")
+
+      list.insert(1, "Lawson")
+
+      assert_instance_of Node, list.head
+      assert_equal "Lawson", list.head.next_node.surname
+    end
+
+
 ################# Testing Count Method
 
   def test_list_count_method
@@ -183,6 +226,16 @@ class Linked_List_Test < Minitest::Test
     assert_equal 3, list.count
   end
 
+  def test_count_for_prepend_iteration_3
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+
+    list.prepend("McKinney")
+
+    assert_equal 3, list.count
+  end
+
   def test_count
 
     list = LinkedList.new
@@ -200,6 +253,7 @@ class Linked_List_Test < Minitest::Test
     list.append("e")
     assert_equal 5, list.count
   end
+
 
 ########### Test String Method
 
@@ -228,6 +282,28 @@ class Linked_List_Test < Minitest::Test
     assert_equal "The Rhodes family, followed by the Hardy family", list.to_string
   end
 
+  def test_string_for_prepend_iteration_3
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+
+    list.prepend("McKinney")
+
+    assert_equal "The McKinney family, followed by the Brooks family, followed by the Henderson family", list.to_string
+  end
+
+  def test_string_interp_for_insert_iteration_three
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+    list.prepend("McKinney")
+    list.insert(1, "Lawson")
+
+    list.to_string
+
+    assert_equal "The McKinney family, followed by the Lawson family, followed by the Brooks family, followed by the Henderson family", list.to_string
+  end
+
   def test__multiple_node_interpolation
     list = LinkedList.new
 
@@ -238,19 +314,6 @@ class Linked_List_Test < Minitest::Test
     list.append("Ares")
 
     assert_equal "The Rhodes family, followed by the Hardy family, followed by the Shaka family, followed by the Ragnar family, followed by the Ares family", list.to_string
-  end
-
-
-########### Prepend Method
-
-  def test_prepend_initial
-    list = LinkedList.new
-    list.append("Brooks")
-    list.append("Henderson")
-
-    list.prepend("McKinney")
-
-    assert_equal "McKinney", list.head.surname
   end
 
 end

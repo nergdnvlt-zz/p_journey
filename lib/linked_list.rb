@@ -28,6 +28,8 @@ class LinkedList
     end
   end
 
+
+
   def prepend(data)
     node = Node.new(data)
 
@@ -36,6 +38,22 @@ class LinkedList
     @head.next_node = prepended_head
 
   end
+
+
+  def insert(location, data)
+      node = Node.new(data)
+      current_node = @head
+
+      (location - 1).times do
+        current = current_node.next_node
+      end
+
+      insert_node = node
+      insert_node.next_node = current_node.next_node
+      current_node.next_node = insert_node
+
+  end
+
 
   def count
     counter = 0
@@ -75,6 +93,7 @@ class LinkedList
         wagon_string = fam_one += next_fam_string
         current_node = current_node.next_node
       end
+      
     end
     wagon_string
   end

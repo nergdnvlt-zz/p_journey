@@ -10,11 +10,13 @@ class Linked_List_Test < Minitest::Test
 
   def test_instance_of_linked_list
     list = LinkedList.new
+
     assert_instance_of LinkedList, list
   end
 
   def test_result_of_calling_head
     list = LinkedList.new
+
     assert_nil list.head
   end
 
@@ -31,6 +33,7 @@ class Linked_List_Test < Minitest::Test
 
   def test_appended_list_returns_correct_list
     list = LinkedList.new
+
     list.append("West")
 
     assert_instance_of LinkedList, list
@@ -38,6 +41,7 @@ class Linked_List_Test < Minitest::Test
 
   def test_result_of_heads_next_node
     list = LinkedList.new
+
     list.append("West")
 
     assert_nil list.head.next_node
@@ -60,6 +64,25 @@ class Linked_List_Test < Minitest::Test
       assert_equal "Rhodes", list.head.surname
       assert_nil list.head.next_node
   end
+
+  def test_new_family_for_iteration_three
+    list = LinkedList.new
+
+    list.append("Brooks")
+
+    assert_instance_of Node, list.head
+    assert_equal "Brooks", list.head.surname
+  end
+
+  def test_another_family_for_iteration_three
+    list = LinkedList.new
+
+    list.append("Henderson")
+
+    assert_instance_of Node, list.head
+    assert_equal "Henderson", list.head.surname
+  end
+
 
   ################# Testing Append - Multiple Nodes
 
@@ -182,9 +205,18 @@ class Linked_List_Test < Minitest::Test
 
   def test_list_string_method
     list = LinkedList.new
+
     list.append("West")
 
     assert_equal "The West family", list.to_string
+  end
+
+  def test_iteration3_list_string_method
+    list = LinkedList.new
+
+    list.append("Brooks")
+
+    assert_equal "The Brooks family", list.to_string
   end
 
   def test__node_interpolation
@@ -206,6 +238,19 @@ class Linked_List_Test < Minitest::Test
     list.append("Ares")
 
     assert_equal "The Rhodes family, followed by the Hardy family, followed by the Shaka family, followed by the Ragnar family, followed by the Ares family", list.to_string
+  end
+
+
+########### Prepend Method
+
+  def test_prepend_initial
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+
+    list.prepend("McKinney")
+
+    assert_equal "McKinney", list.head.surname
   end
 
 end

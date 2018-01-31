@@ -28,6 +28,14 @@ class LinkedList
     end
   end
 
+  def prepend(data)
+    node = Node.new(data)
+
+    prepended_head = @head
+    @head = node
+    @head.next_node = prepended_head
+
+  end
 
   def count
     counter = 0

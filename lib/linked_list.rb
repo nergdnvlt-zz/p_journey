@@ -54,6 +54,17 @@ class LinkedList
 
   end
 
+  def pop
+    current_node = @head
+
+    until current_node.next_node.nil?
+      current_node = current_node.next_node
+    end
+#set that node date = nil
+
+
+  end
+
 
   def find(location, elements)
     current_node = @head
@@ -128,6 +139,21 @@ class LinkedList
     end
 
     wagon_string
+  end
+
+  def includes?(surname)
+    current_node = @head
+
+    until current_node.next_node == nil || current_node.surname == surname
+      current_node = current_node.next_node
+    end
+
+    if current_node.surname == surname
+      answer = true
+    else
+      answer = false
+    end
+    answer
   end
 
 

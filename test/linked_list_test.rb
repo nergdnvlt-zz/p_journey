@@ -215,7 +215,7 @@ def test_find_method_different_values
   list.prepend("McKinney")
   list.insert(1, "Lawson")
   list.to_string
-  
+
   list.find(1, 3)
 
   assert_equal "The Lawson family, followed by the Brooks family, followed by the Henderson family", list.find(1, 3)
@@ -357,17 +357,40 @@ end
     assert_equal true, list.includes?("Brooks")
   end
 
-  # def test_include_method
-  #   list = LinkedList.new
-  #   list.append("Brooks")
-  #   list.append("Henderson")
-  #   list.prepend("McKinney")
-  #   list.insert(1, "Lawson")
-  #
-  #   list.includes?("Brooks")
-  #
-  #   assert list.includes?("Brooks")
-  # end
+  def test_include_method
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+    list.prepend("McKinney")
+    list.insert(1, "Lawson")
 
+    list.includes?("Brooks")
+
+    assert_equal true, list.includes?("Brooks")
+  end
+
+  def test_include_method_returns_false_correctly
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+    list.prepend("McKinney")
+    list.insert(1, "Lawson")
+
+    list.includes?("Chapman")
+
+    assert_equal false, list.includes?("Chapman")
+  end
+
+######### Test Pop Method
+
+
+  def test_pop_method
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+
+    list.pop
+    assert_equal "The Henderson family has died of dysentery", list.pop
+  end
 
 end

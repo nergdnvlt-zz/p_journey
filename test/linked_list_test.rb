@@ -180,12 +180,12 @@ class Linked_List_Test < Minitest::Test
 
 ########### Test String Method
 
-  # def test_list_string_method
-  #   list = LinkedList.new
-  #   list.append("West")
-  #
-  #   assert_equal "The West family", list.to_string
-  # end
+  def test_list_string_method
+    list = LinkedList.new
+    list.append("West")
+
+    assert_equal "The West family", list.to_string
+  end
 
   # def test__node_interpolation
   #   list = LinkedList.new

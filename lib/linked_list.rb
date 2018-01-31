@@ -50,7 +50,8 @@ class LinkedList
     counter
   end
 
-  # def to_string
+
+  def to_string
   #   current_node = @head
   #   if current_node.nil?
   #     "The train hasn't assembled yet"
@@ -63,7 +64,7 @@ class LinkedList
   #   end
   #   return familes
   #   # "The #{current.surname} family"
-  # end
+  end
 
 
 end

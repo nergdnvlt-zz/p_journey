@@ -187,13 +187,25 @@ class Linked_List_Test < Minitest::Test
     assert_equal "The West family", list.to_string
   end
 
-  # def test__node_interpolation
-  #   list = LinkedList.new
-  #
-  #   list.append("Rhodes")
-  #   list.append("Hardy")
-  #
-  #   assert_equal "The Rhodes family, followed by the Hardy family", list.to_string
-  # end
+  def test__node_interpolation
+    list = LinkedList.new
+
+    list.append("Rhodes")
+    list.append("Hardy")
+
+    assert_equal "The Rhodes family, followed by the Hardy family", list.to_string
+  end
+
+  def test__multiple_node_interpolation
+    list = LinkedList.new
+
+    list.append("Rhodes")
+    list.append("Hardy")
+    list.append("Shaka")
+    list.append("Ragnar")
+    list.append("Ares")
+
+    assert_equal "The Rhodes family, followed by the Hardy family, followed by the Shaka family, followed by the Ragnar family, followed by the Ares family", list.to_string
+  end
 
 end

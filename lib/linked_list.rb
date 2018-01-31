@@ -52,19 +52,25 @@ class LinkedList
 
 
   def to_string
-  #   current_node = @head
-  #   if current_node.nil?
-  #     "The train hasn't assembled yet"
-  #   else
-  #     families = "The #{current_node.surname} family"
-  #     until current_node.next_node.nil?
-  #       current_node = current_node.next_node
-  #       families << ", followed by the #{current_node.surname} family"
-  #     end
-  #   end
-  #   return familes
-  #   # "The #{current.surname} family"
+    fam_one = "The #{@head.surname} family"
+
+    if @head.nil?
+      wagon_string = "There aren't any families yet."
+    elsif @head.next_node.nil?
+      wagon_string = fam_one
+    else
+      current_node = @head
+
+      until current_node.next_node.nil?
+        next_fam = current_node.next_node.surname
+        next_fam_string = ", followed by the #{next_fam} family"
+        wagon_string = fam_one += next_fam_string
+        current_node = current_node.next_node
+      end
+    end
+    wagon_string
   end
+
 
 
 end

@@ -62,16 +62,16 @@ class Linked_List_Test < Minitest::Test
   end
 
   ################# Testing Append - Multiple Nodes
-  # 
-  # def test_append_additional_node
-  #     list = LinkedList.new
-  #
-  #     list.append("Rhodes")
-  #     list.append("Hardy")
-  #
-  #     assert_instance_of Node, list.head.next_node
-  # end
-  #
+  
+  def test_append_additional_node
+      list = LinkedList.new
+
+      list.append("Rhodes")
+      list.append("Hardy")
+
+      assert_instance_of Node, list.head.next_node
+  end
+
   # def test_can_call_next_surname
   #   list = LinkedList.new
   #

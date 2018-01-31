@@ -3,13 +3,12 @@ require 'pry'
 
 
 class LinkedList
-  attr_reader :head,
-              :count
+  attr_reader :head
 
 
   def initialize(head=nil)
     @head         = head
-    @count        = 0
+    @node_count        = 0
   end
 
   def append(data)
@@ -17,7 +16,6 @@ class LinkedList
       @head = Node.new(data)
     else
       @head.next_node = Node.new(data)
-      @tail = @head.next_node
     end
   end
 
@@ -37,18 +35,20 @@ class LinkedList
   end
 
   def count
-    current_node = @head
+    current_node = @head.next_node
 
-    if current_node.nil?
-      @count = 0
-    else
-      until current_node.next_node.nil?
+    if @head.nil?
+      @node_count = 0
+    elsif @head.next_node.nil?
+      @node_count = 1
+    else @node_count = 1
+      until current_node.nil?
         current_node = current_node.next_node
-        @count += 1
+        @node_count += 1
       end
     end
-    # @count
-    binding.pry
+    @node_count
+    # binding.pry
   end
 
 

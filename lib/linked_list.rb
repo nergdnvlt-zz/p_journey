@@ -60,8 +60,10 @@ class LinkedList
     until current_node.next_node.nil?
       current_node = current_node.next_node
     end
-#set that node date = nil
+    booted_fam = current_node.surname
+    current_node.next_node = nil
 
+    "The #{booted_fam} family has died of dysentery"
 
   end
 

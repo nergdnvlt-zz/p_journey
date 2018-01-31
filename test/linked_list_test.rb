@@ -6,7 +6,7 @@ require 'pry'
 require './lib/linked_list.rb'
 require './lib/node.rb'
 
-class Linked_List_Test < Minitest::Test
+class LinkedListTest < Minitest::Test
 
   def test_instance_of_linked_list
     list = LinkedList.new
@@ -390,7 +390,23 @@ end
     list.append("Henderson")
 
     list.pop
+
     assert_equal "The Henderson family has died of dysentery", list.pop
   end
+
+  def test_multiple_nodes_pop_method
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Hobbes")
+    list.append("Gnarly")
+    list.append("Henderson")
+    list.append("Wrath")
+
+    list.pop
+
+    assert_equal "The Wrath family has died of dysentery", list.pop
+  end
+
+
 
 end

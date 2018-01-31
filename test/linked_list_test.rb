@@ -403,8 +403,10 @@ end
     list.append("Wrath")
 
     list.pop
+    result = list.pop
+    expected = "The Wrath family has died of dysentery"
 
-    assert_equal "The Wrath family has died of dysentery", list.pop
+    assert_equal expected, result
   end
 
 

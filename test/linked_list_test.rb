@@ -1,10 +1,8 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'pry'
 
-require './lib/linked_list.rb'
-require './lib/node.rb'
+require './lib/linked_list'
 
 class LinkedListTest < Minitest::Test
 

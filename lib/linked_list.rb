@@ -1,5 +1,4 @@
-require './lib/node.rb'
-require 'pry'
+require './lib/node'
 
 
 class LinkedList

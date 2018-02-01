@@ -1,5 +1,4 @@
 require './lib/linked_list'
-require 'pry'
 
 class WagonTrain
   attr_accessor :list

@@ -27,52 +27,97 @@ class WagonTrainTest < Minitest::Test
     assert_nil wt.list.head
   end
 
-  def test_wagon_train_append
-    wt = WagonTrain.new
+  # def test_wagon_train_append
+  #   wt = WagonTrain.new
+  #
+  #   wt.append("Burke")
+  #
+  #   assert_instance_of Node, wt.list.head
+  #   assert_equal "Burke", wt.list.head.surname
+  # end
+  #
+  # def test_append_with_different_name
+  #   wt = WagonTrain.new
+  #
+  #   wt.append("West")
+  #
+  #   assert_instance_of Node, wt.list.head
+  #   assert_equal "West", wt.list.head.surname
+  # end
+  #
+  # def test_multiple_appends
+  #   wt = WagonTrain.new
+  #
+  #   wt.append("Burke")
+  #   assert_instance_of Node, wt.list.head
+  #   assert_equal "Burke", wt.list.head.surname
+  #
+  #   wt.append("West")
+  #   assert_instance_of Node, wt.list.head.next_node
+  #   assert_equal "West", wt.list.head.next_node.surname
+  # end
+  #
+  # def test_wagon_train_count
+  #   wt = WagonTrain.new
+  #
+  #   wt.append("Burke")
+  #   wt.append("West")
+  #
+  #   assert_equal 2, wt.count
+  # end
 
-    wt.append("Burke")
-
-    assert_instance_of Node, wt.list.head
-    assert_equal "Burke", wt.list.head.surname
-  end
-
-  def test_append_with_different_name
-    wt = WagonTrain.new
-
-    wt.append("West")
-
-    assert_instance_of Node, wt.list.head
-    assert_equal "West", wt.list.head.surname
-  end
-
-  def test_multiple_appends
-    wt = WagonTrain.new
-
-    wt.append("Burke")
-    assert_instance_of Node, wt.list.head
-    assert_equal "Burke", wt.list.head.surname
-
-    wt.append("West")
-    assert_instance_of Node, wt.list.head.next_node
-    assert_equal "West", wt.list.head.next_node.surname
-  end
-
-  def test_wagon_train_count
-    wt = WagonTrain.new
-
-    wt.append("Burke")
-    wt.append("West")
-
-    assert_equal 2, wt.count
-  end
 
   def test_appending_supplies
     wt = WagonTrain.new
 
     wt.append("Burke", {"pounds of food" => 200})
-  
+
     assert_instance_of Node, wt.list.head
     assert_equal "Burke", wt.list.head.surname
   end
+
+  def test_wagon_prepend
+      wt = WagonTrain.new
+      wt.append("Burke", {"pounds of food" => 200})
+
+      wt.list.prepend("Hardy", {"spare wagon tongues" => 3})
+
+      assert_instance_of Node, wt.list.head
+      assert_equal "Hardy", wt.list.head.surname
+  end
+
+  def test_wagon_insert
+      wt = WagonTrain.new
+      wt.append("Burke", {"pounds of food" => 200})
+      wt.list.prepend("Hardy", {"spare wagon tongues" => 3})
+
+      wt.list.insert(1, "West", {"pounds of food" => 300})
+
+      assert_instance_of Node, wt.list.head
+      assert_equal "Hardy", wt.list.head.surname
+  end
+
+  def test_count_after_methods
+      wt = WagonTrain.new
+      wt.append("Burke", {"pounds of food" => 200})
+      wt.list.prepend("Hardy", {"spare wagon tongues" => 3})
+      wt.list.insert(1, "West", {"pounds of food" => 300})
+
+      assert_equal 3, wt.count
+  end
+
+  def test_supplies
+    wt = WagonTrain.new
+    wt.append("Burke", {"pounds of food" => 200})
+    wt.list.prepend("Hardy", {"spare wagon tongues" => 3})
+    wt.list.insert(1, "West", {"pounds of food" => 300})
+
+    expected = {"spare wagon tongues" => 3, "pounds of food" => 500}
+    result = wt.supplies
+
+    assert_equal expected, result
+  end
+
+
 
 end

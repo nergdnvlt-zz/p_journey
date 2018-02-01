@@ -57,16 +57,21 @@ class LinkedList
   def pop
     current_node = @head
 
-    until current_node.next_node.nil?
+    if current_node.next_node.nil?
+        @head = nil
+        return current_node
+    end
+
+    until current_node.next_node.next_node.nil?
       current_node = current_node.next_node
     end
-    booted_fam = current_node.surname
+    booted_name = current_node.next_node.surname
+
     current_node.next_node = nil
 
-    "The #{booted_fam} family has died of dysentery"
+    "The #{booted_name} family has died of dysentery"
 
   end
-
 
   def find(location, elements)
     current_node = @head

@@ -394,6 +394,16 @@ end
     assert_equal "The Henderson family has died of dysentery", list.pop
   end
 
+  def test_pop_method
+    list = LinkedList.new
+    list.append("Brooks")
+    list.append("Henderson")
+
+    list.pop
+
+    assert_equal false, list.includes?("Henderson")
+  end
+
   def test_multiple_nodes_pop_method
     list = LinkedList.new
     list.append("Brooks")
@@ -402,9 +412,24 @@ end
     list.append("Henderson")
     list.append("Wrath")
 
-    list.pop
+
     result = list.pop
     expected = "The Wrath family has died of dysentery"
+
+    assert_equal expected, result
+    assert_equal false, list.includes?("Wrath")
+  end
+
+  def test_to_string_after_pop_method
+    list = LinkedList.new
+    list.append("McKinney")
+    list.append("Lawson")
+    list.append("Henderson")
+
+    list.pop
+
+    expected = "The McKinney family, followed by the Lawson family"
+    result = list.to_string
 
     assert_equal expected, result
   end

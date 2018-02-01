@@ -29,12 +29,14 @@ class NodeTest < Minitest::Test
     assert_equal nil, node.next_node
   end
 
-  def test_other_node_values_work
-    node_array = [1,2,3,4]
-    node_array.each do |node_num|
-      node = Node.new("Burke", node_num)
-      assert_equal node_num, node.next_node
-    end
+
+  def test_node_can_carry_supplies
+    node = Node.new("Burke", {"pounds of food" => 200})
+
+    expected_supplies = {"pounds of food" => 200}
+    assert_instance_of Node, node
+    assert_equal "Burke", node.surname
+    assert_equal expected_supplies, node.supplies
   end
 
 

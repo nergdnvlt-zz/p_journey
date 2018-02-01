@@ -10,8 +10,8 @@ class LinkedList
   end
 
 
-  def append(data)
-    node = Node.new(data)
+  def append(surname, supplies = {})
+    node = Node.new(surname)
 
     if @head == nil
       @head = node
@@ -29,8 +29,8 @@ class LinkedList
 
 
 
-  def prepend(data)
-    node = Node.new(data)
+  def prepend(data, supplies = nil)
+    node = Node.new(data, supplies = nil)
 
     prepended_head = @head
     @head = node
@@ -39,8 +39,8 @@ class LinkedList
   end
 
 
-  def insert(location, data)
-      node = Node.new(data)
+  def insert(location, data, supplies = nil)
+      node = Node.new(data, supplies = nil)
       current_node = @head
 
       (location - 1).times do

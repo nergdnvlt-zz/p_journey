@@ -1,8 +1,11 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'pry'
 
 require './lib/wagon_train'
+
+
 
 class WagonTrainTest < Minitest::Test
 
@@ -61,6 +64,15 @@ class WagonTrainTest < Minitest::Test
     wt.append("West")
 
     assert_equal 2, wt.count
+  end
+
+  def test_appending_supplies
+    wt = WagonTrain.new
+
+    wt.append("Burke", {"pounds of food" => 200})
+  
+    assert_instance_of Node, wt.list.head
+    assert_equal "Burke", wt.list.head.surname
   end
 
 end

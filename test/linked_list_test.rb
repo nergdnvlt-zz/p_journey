@@ -29,6 +29,14 @@ class LinkedListTest < Minitest::Test
     assert_equal "West", list.head.surname
   end
 
+  def test_append_method_with_supplies
+    list = LinkedList.new
+
+    list.append("Burke", {"pounds of food" => 200})
+
+    assert_instance_of Node, list.head
+  end
+
   def test_appended_list_returns_correct_list
     list = LinkedList.new
 

@@ -1,27 +1,27 @@
 require './lib/linked_list'
-
+require 'pry'
 
 class WagonTrain
   attr_accessor :list
 
   def initialize
     @list = LinkedList.new
-    @supplies = {}
+    @main_supplies = {"spare wagon tongues" => 0, "pounds of food" => 0}
   end
 
   def append(surname, supplies)
     list.append(surname, supplies)
-    # @supplies += supplies
+    @main_supplies[supplies.keys[0]] += supplies.values[0]
   end
 
   def prepend(surname, supplies)
     list.prepend(surname, supplies)
-      # @supplies += supplies
+    @main_supplies[supplies.keys[0]] += supplies.values[0]
   end
 
   def insert(location, surname, supplies)
     list.insert(location, surname, supplies)
-    # @supplies += supplies
+    @main_supplies[supplies.keys[0]] += supplies.values[0]
   end
 
   def count
@@ -29,8 +29,7 @@ class WagonTrain
   end
 
   def supplies
+    @main_supplies
   end
-
-
 
 end
